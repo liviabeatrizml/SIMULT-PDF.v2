@@ -1,6 +1,6 @@
 # SIMULT-PDF 2.0
 > O SIMULT-PDF é um sistema de monitoramento/cadastramento de multas, desenvolvido inicialmente na linguagem Portugol, com o intuito de aprimorar a lógica de programação. O sistema elaborado na disciplina de Laboratório de Algoritmos é simples e consiste na construção de um menu principal para auxiliar nas tomadas de decisões.
-Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anterior através do direcionamento ao acesso de acordo com o tipo de ator (usuário ou administrador) selecionado. Dessa forma, são acrescidas novas funcionalidades - além da básica geração de multas e relatórios de trânsito - ao novo programa implementado na linguagem de programação Java.
+Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anterior, através do direcionamento ao acesso conforme o tipo de ator (usuário ou administrador) selecionado. Dessa forma, são acrescidas novas funcionalidades - além da básica geração de multas e relatórios de trânsito - ao novo programa implementado na linguagem de programação Java.
 
 ## :clipboard: Requisitos
 
