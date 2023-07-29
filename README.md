@@ -24,7 +24,7 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
  - [ ] Testes
 
 ## :family_man_woman_girl_boy: Equipe
-:man_teacher: Professor: [Alysson Filgueira Milanez](https://github.com/alyssonfm).
-:woman_student: Integrante: [Geísa Morais Gabriel](https://github.com/Geisa-mg).
-:man_student: Integrante: [Leonardo Inácio Guilherme Dantas](https://github.com/LeonardoIGD).
-:woman_student: Integrante: [Lívia Beatriz Maia de Lima](https://github.com/liviabeatrizml).
+:man_teacher: Professor: [Alysson Filgueira Milanez](https://github.com/alyssonfm). </br>
+:woman_student: Integrante: [Geísa Morais Gabriel](https://github.com/Geisa-mg). </br>
+:man_student: Integrante: [Leonardo Inácio Guilherme Dantas](https://github.com/LeonardoIGD). </br>
+:woman_student: Integrante: [Lívia Beatriz Maia de Lima](https://github.com/liviabeatrizml). </br>
