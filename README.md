@@ -19,9 +19,16 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
 	 - [RNF001] O sistema deve ser implementado em linguagem Java
 	 - [RNF002] Bloquear acesso do administrador ao programa caso erre 3 vezes o login
 
+## :paperclip: Artefatos
+ - Diagrama de Caso e Uso
+
+[Diagrama de Caso e Uso](Diagramas/UseCaseDiagram - Teste de Software.png)
+
+
+
 ## :hammer_and_wrench: Realização de Teste
 
- - [ ] Testes
+ - [ ] XXX
 
 ## :family_man_woman_girl_boy: Equipe
 :man_teacher: Professor: [Alysson Filgueira Milanez](https://github.com/alyssonfm). </br>
