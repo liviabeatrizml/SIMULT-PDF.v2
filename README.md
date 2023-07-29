@@ -22,7 +22,7 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
 ## :paperclip: Artefatos
  - Diagrama de Caso e Uso
 
-[Diagrama de Caso e Uso](Diagramas/UseCaseDiagram_-_Teste de Software.png)
+[Diagrama de Caso e Uso](Diagramas/UseCaseDiagram-Teste de Software.png)
 
 
 
