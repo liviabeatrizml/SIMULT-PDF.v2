@@ -24,7 +24,9 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
 
 ![Diagrama de Caso e Uso](Diagramas/UseCaseDiagram_Teste_de_Software.png)
 
+ - Diagrama de Classe
 
+![Diagrama de Classe](Diagramas/ClassDiagram_Teste_de_Software.png)
 
 ## :hammer_and_wrench: Realização de Teste
 
