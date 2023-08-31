@@ -12,7 +12,7 @@ public class Relatorio {
     private ArrayList<Multa> listaDeMultas;
     private String dataHora;
 
-    public Relatorio(Veiculo veiculo, Ator autor) {
+    public Relatorio(Ator autor, Veiculo veiculo) {
         this.id = 0;
         this.autor = autor;
         this.veiculo = veiculo;
@@ -46,6 +46,14 @@ public class Relatorio {
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
+    }
+
+    public ArrayList<Multa> getListaDeMultas() {
+        return listaDeMultas;
+    }
+
+    public void setListaDeMultas(ArrayList<Multa> listaDeMultas) {
+        this.listaDeMultas = listaDeMultas;
     }
 
     public String getDataHora() {
