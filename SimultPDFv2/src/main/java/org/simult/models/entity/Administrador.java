@@ -1,15 +1,33 @@
 package org.simult.models.entity;
 
-public class Administrador extends Ator{
+public class Administrador{
+    private int id;
     private String nome;
     private String email;
     private String login;
     private String senha;
-    public Administrador(String nome, String login, String senha, String email) {
+
+    public Administrador(int id, String nome, String email, String login, String senha) {
+        this.id = id;
         this.nome = nome;
         this.login = login;
         this.senha = senha;
         this.email = email;
+    }
+
+    public Administrador(String nome, String email, String login, String senha) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
