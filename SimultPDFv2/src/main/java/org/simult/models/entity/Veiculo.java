@@ -5,49 +5,43 @@ import java.util.ArrayList;
 public class Veiculo {
     private String proprietario;
     private String placa;
-    private int renavam;
+    private String renavam;
     private String chassi;
     private String estadoRegistro;
-    private String cidadeRegistro;
+    private String municipioRegistro;
     private String cor;
     private String marca;
     private String modelo;
     private String especie;
     private ArrayList<Multa> multas;
 
-    public Veiculo(String proprietario, String placa, int renavam, String chassi, String estadoRegistro, String cidadeRegistro, String cor, String marca, String modelo, String especie) {
+    public Veiculo(String placa, String renavam, String chassi, String proprietario, String estadoRegistro, String municipioRegistro, String cor, String marca, String modelo, String especie) {
         this.placa = placa;
         this.renavam = renavam;
         this.chassi = chassi;
         this.proprietario = proprietario;
         this.estadoRegistro = estadoRegistro;
-        this.cidadeRegistro = cidadeRegistro;
+        this.municipioRegistro = municipioRegistro;
         this.cor = cor;
         this.marca = marca;
         this.modelo = modelo;
         this.especie = especie;
+        this.multas = new ArrayList<>();
     }
 
-    public Veiculo(String proprietario, String placa, int renavam, String chassi, String estadoRegistro, String cidadeRegistro, String cor, String marca, String modelo, String especie, ArrayList<Multa> multas) {
+    public Veiculo(String placa, String renavam, String chassi, String proprietario, String estadoRegistro, String municipioRegistro, String cor, String marca, String modelo, String especie, ArrayList<Multa> multas) {
         this.placa = placa;
         this.renavam = renavam;
         this.chassi = chassi;
         this.proprietario = proprietario;
         this.estadoRegistro = estadoRegistro;
-        this.cidadeRegistro = cidadeRegistro;
+        this.municipioRegistro = municipioRegistro;
         this.cor = cor;
         this.marca = marca;
         this.modelo = modelo;
         this.especie = especie;
         this.multas = multas;
-    }
-
-    public String getProprietario() {
-        return proprietario;
-    }
-
-    public void setProprietario(String proprietario) {
-        this.proprietario = proprietario;
+        this.multas = new ArrayList<>();
     }
 
     public String getPlaca() {
@@ -58,12 +52,20 @@ public class Veiculo {
         this.placa = placa;
     }
 
-    public int getRenavam() {
+    public String getRenavam() {
         return renavam;
     }
 
-    public void setRenavam(int renavam) {
+    public void setRenavam(String renavam) {
         this.renavam = renavam;
+    }
+
+    public String getProprietario() {
+        return proprietario;
+    }
+
+    public void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
     }
 
     public String getEstadoRegistro() {
@@ -74,12 +76,12 @@ public class Veiculo {
         this.estadoRegistro = estadoRegistro;
     }
 
-    public String getCidadeRegistro() {
-        return cidadeRegistro;
+    public String getMunicipioRegistro() {
+        return municipioRegistro;
     }
 
-    public void setCidadeRegistro(String cidadeRegistro) {
-        this.cidadeRegistro = cidadeRegistro;
+    public void setMunicipioRegistro(String municipioRegistro) {
+        this.municipioRegistro = municipioRegistro;
     }
 
     public String getChassi() {
