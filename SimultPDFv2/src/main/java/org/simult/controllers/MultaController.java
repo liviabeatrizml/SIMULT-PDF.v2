@@ -1,33 +1,48 @@
 package org.simult.controllers;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.simult.models.entity.Multa;
-import org.simult.models.entity.Veiculo;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MultaController {
-    private static Scanner input = new Scanner(System.in);
+import static org.simult.models.dao.MultaDAO.*;
 
-    public static Multa criarMulta(){
+public class MultaController {
+    private static final Scanner input = new Scanner(System.in);
+
+    public static boolean criarMulta(){
         int id = 0;
         int opcao = 0;
+        int pontos = 0;
         double valor = 0.0;
 
+        String codigo = "";
         String descricao = "";
-        String estado = "";
-        String municipio = "";
         String classificacao = "";
-        Calendar dataHora = null;
-        Veiculo veiculo = null;
 
         System.out.println("\nInsira as informações para realizar o cadastro de Multa:\n");
 
-        // Entrada do atributo veiculo da multa
+        // Entrada do atributo codigo da multa
         do {
-            System.out.println("\t- Informe a placa e o renavam do veículo: \n");
+            String aux1 = "";
+            String aux2 = "";
 
-        } while (veiculo != null);
+            try {
+                System.out.println("\t- Informe o código da multa (apenas números): \n");
+                id = Integer.parseInt(input.nextLine());
+
+                codigo = "" + id;
+                aux1 = codigo.substring(0,3);
+                aux2 = codigo.substring(3, 5);
+
+                codigo = aux1 + "-" + aux2;
+            } catch (NumberFormatException e){
+                System.out.println("\n\t\t O campo código aceita somente números!\n");
+            }
+
+        } while (!codigo.isEmpty());
 
         // Entrada do atributo descrição da multa
         do {
@@ -35,74 +50,145 @@ public class MultaController {
             descricao = input.nextLine();
 
             if(descricao.isEmpty()) {
-                System.out.println("\t\t\n Descrição não pode ser vazia...\n");
+                System.out.println("\n\t\t Descrição não pode ser vazia...\n");
             } else if(descricao.length() > 100){
-                System.out.println("\t\t\n Descrição não pode ter mais de 100 caracteres...\n");
+                System.out.println("\n\t\t Descrição não pode ter mais de 100 caracteres...\n");
             }
         } while (descricao.isEmpty() || descricao.length() > 100);
 
-        // Entrada do atributo classificação e valor da multa
+        // Entrada do atributo classificação, pontos e valor da multa
         do {
             System.out.println("\t- Informe a classificação da multa: \n");
             System.out.println("\t1 - LEVE\n\t2 - MÉDIA\n\t3 - GRAVE\n\t4 - GRAVÍSSIMA\n");
             System.out.println("\n\t Opção: ");
-            opcao = input.nextInt();
 
-            switch (opcao){
-                case 1:
-                    classificacao = "Leve";
-                    valor = 88.38;                  // Valor do dia 25/08/2023 as 20hrs
-                    break;
-                case 2:
-                    classificacao = "Média";
-                    valor = 130.16;                  // Valor do dia 25/08/2023 as 20hrs
-                    break;
-                case 3:
-                    classificacao = "Grave";
-                    valor = 195.23;                  // Valor do dia 25/08/2023 as 20hrs
-                    break;
-                case 4:
-                    classificacao = "Gravíssima";
-                    valor = 293.47;                  // Valor do dia 25/08/2023 as 20hrs
-                    break;
-                default:
-                    System.out.println("\t\t\n Opção inválida!\n");
-                    break;
+            try {
+                opcao = Integer.parseInt(input.nextLine());
+
+                switch (opcao){
+                    case 1:
+                        classificacao = "Leve";
+                        pontos = 3;
+                        valor = 88.38;                  // Valor do dia 25/08/2023 as 20hrs
+                        break;
+                    case 2:
+                        classificacao = "Média";
+                        pontos = 4;
+                        valor = 130.16;                  // Valor do dia 25/08/2023 as 20hrs
+                        break;
+                    case 3:
+                        classificacao = "Grave";
+                        pontos = 5;
+                        valor = 195.23;                  // Valor do dia 25/08/2023 as 20hrs
+                        break;
+                    case 4:
+                        classificacao = "Gravíssima";
+                        pontos = 7;
+                        valor = 293.47;                  // Valor do dia 25/08/2023 as 20hrs
+                        break;
+                    default:
+                        System.out.println("\n\t\t Opção inválida!\n");
+                        break;
+                }
+            } catch (NumberFormatException e){
+                System.out.println("\n\t\t O campo opção aceita somente números!\n");
             }
 
         } while (classificacao.isEmpty());
 
-        // Entrada do atributo estado da multa
+        Multa multa = new Multa(codigo, descricao, classificacao, pontos, valor);
+
+        return insereMulta(multa);
+    }
+
+    public static boolean excluirMulta() {
+        int id = 0;
+        String codigo = "";
+
+        System.out.println("\nInsira as informações da multa para realizar a exclusão:\n");
+
+        // Entrada do valor do codigo da multa
         do {
-            System.out.println("\t- Informe o estado em que ocorreu a multa: \n");
-            estado = input.nextLine();
+            String aux1 = "";
+            String aux2 = "";
 
-            if(estado.isEmpty()) {
-                System.out.println("\t\t\n É necessário informar o estado em que ocorreu a multa!\n");
+            try {
+                System.out.println("\t- Informe o código da multa (apenas números): \n");
+                id = Integer.parseInt(input.nextLine());
+
+                codigo = "" + id;
+                aux1 = codigo.substring(0, 3);
+                aux2 = codigo.substring(3, 5);
+
+                codigo = aux1 + "-" + aux2;
+            } catch (NumberFormatException e) {
+                System.out.println("\n\t\t O campo código aceita somente números!\n");
             }
-        } while (estado.isEmpty());
 
-        // Entrada do atributo municipio da multa
+        } while (!codigo.isEmpty());
+
+        return removeMulta(codigo);
+    }
+
+    public static Multa buscarMulta(){
+        int id = 0;
+        String codigo = "";
+
+        System.out.println("\nInsira as informações da multa para realizar a busca:\n");
+
+        // Entrada do valor do codigo da multa
         do {
-            System.out.println("\t- Informe o municipio em que ocorreu a multa: \n");
-            municipio = input.nextLine();
+            String aux1 = "";
+            String aux2 = "";
 
-            if(municipio.isEmpty()) {
-                System.out.println("\t\t\n É necessário informar o municipio em que ocorreu a multa!\n");
+            try {
+                System.out.println("\t- Informe o código da multa (apenas números): \n");
+                id = Integer.parseInt(input.nextLine());
+
+                codigo = "" + id;
+                aux1 = codigo.substring(0, 3);
+                aux2 = codigo.substring(3, 5);
+
+                codigo = aux1 + "-" + aux2;
+            } catch (NumberFormatException e) {
+                System.out.println("\n\t\t O campo código aceita somente números!\n");
             }
-        } while (municipio.isEmpty());
 
-        Multa multa = new Multa(veiculo, descricao, estado, municipio, classificacao, valor, Calendar.getInstance());
+        } while (!codigo.isEmpty());
 
-        return multa;
+        return buscaMulta(codigo);
     }
 
-    public boolean excluirMulta(){
-        return false;
+    public static void verDadosMulta(){
+        Multa multa = buscarMulta();
+        System.out.println(multa);
     }
 
-    public Multa buscarMulta(){
-        return null;
+    public static void listaMultas(){
+        ArrayList<Multa> multas = new ArrayList<>();
+        multas = buscaMultaGeral();
+
+        System.out.println("Multas cadastradas: \n");
+        if (multas != null){
+            for (Multa multa : multas) {
+                System.out.println(multa);
+            }
+        } else {
+            System.out.println("Nenhuma multa cadastrada no sistema:");
+        }
     }
 
+    public static void listaMultas(String classificacao){
+        ArrayList<Multa> multas = new ArrayList<>();
+        multas = buscaMultaClassificacao(classificacao);
+
+        System.out.println("Multas " + classificacao + ": \n");
+        if (multas != null){
+            for (Multa multa : multas) {
+                System.out.println(multa);
+            }
+        } else {
+            System.out.println("Nenhuma multa cadastrada com essa classificação");
+        }
+    }
 }
