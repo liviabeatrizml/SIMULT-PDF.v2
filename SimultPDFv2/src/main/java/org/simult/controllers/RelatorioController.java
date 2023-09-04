@@ -1,6 +1,5 @@
 package org.simult.controllers;
 
-import org.simult.models.entity.Ator;
 import org.simult.models.entity.Relatorio;
 import org.simult.models.entity.Veiculo;
 

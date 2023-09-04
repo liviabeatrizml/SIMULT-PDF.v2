@@ -3,29 +3,17 @@ package org.simult.models.entity;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Relatorio {
     private int id;
-    private Ator autor;
-    private Veiculo veiculo;
-    private ArrayList<Multa> listaDeMultas;
+    private Administrador autor;
+    private ArrayList<AutuacaoTransito> autuacoesTransito;
     private String dataHora;
 
-    public Relatorio(Ator autor, Veiculo veiculo) {
+    public Relatorio(Administrador autor, ArrayList<AutuacaoTransito> autuacoes) {
         this.id = 0;
         this.autor = autor;
-        this.veiculo = veiculo;
-
-        SimpleDateFormat mascara = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss z");
-        Calendar data = Calendar.getInstance();
-        this.dataHora = mascara.format(data.getTime());
-    }
-
-    public Relatorio(Ator autor, ArrayList<Multa> multas) {
-        this.id = 0;
-        this.autor = autor;
-        this.listaDeMultas = multas;
+        this.autuacoesTransito = autuacoes;
 
         SimpleDateFormat mascara = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss z");
         Calendar data = Calendar.getInstance();
@@ -40,20 +28,20 @@ public class Relatorio {
         this.id = id;
     }
 
-    public Veiculo getVeiculo() {
-        return veiculo;
+    public Administrador getAutor() {
+        return autor;
     }
 
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
+    public void setAutor(Administrador autor) {
+        this.autor = autor;
     }
 
-    public ArrayList<Multa> getListaDeMultas() {
-        return listaDeMultas;
+    public ArrayList<AutuacaoTransito> getAutuacoesTransito() {
+        return autuacoesTransito;
     }
 
-    public void setListaDeMultas(ArrayList<Multa> listaDeMultas) {
-        this.listaDeMultas = listaDeMultas;
+    public void setAutuacoesTransito(ArrayList<AutuacaoTransito> autuacoesTransito) {
+        this.autuacoesTransito = autuacoesTransito;
     }
 
     public String getDataHora() {
@@ -64,12 +52,6 @@ public class Relatorio {
         this.dataHora = dataHora;
     }
 
-    public Ator getAutor() {
-        return autor;
-    }
 
-    public void setAutor(Ator autor) {
-        this.autor = autor;
-    }
 
 }
