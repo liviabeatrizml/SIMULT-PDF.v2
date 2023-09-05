@@ -30,7 +30,7 @@ public class AutuacaoTransitoController {
         System.out.println("\nInforme a Placa e o Renavam do veículo multado:");
 
         do {
-            System.out.println("\t- Escreva a placa do veículo: \n");
+            System.out.print("\t- Escreva a PLACA do veículo: ");
             placa = input.nextLine().toUpperCase();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
@@ -38,20 +38,32 @@ public class AutuacaoTransitoController {
 
             if(placa.length() == 7){
                 if(!letras.matcher(placa.substring(0, 3)).find() && !nums.matcher(("" + placa.charAt(3))).find() && !letras.matcher(("" + placa.charAt(4))).find() && !nums.matcher(placa.substring(5, 7)).find()){
-                    System.out.println("\n\t\t Formato da placa do veículo incorreta!\n");
+                    System.out.println("\n\t\t Formato da PLACA do veículo incorreta!\n");
                     placa = "";
                 }
             } else {
-                System.out.println("\n\t\t A placa do veículo deve ser formada por 7 dígitos!\n");
+                System.out.println("\n\t\t A PLACA do veículo deve ser formada por 7 dígitos!\n");
             }
 
         } while (placa.length() != 7);
 
+        // Entrada do valor do renavam do veículo
         do {
-            System.out.println("\t- Renavam:");
+            System.out.print("\t- Informe o RENAVAM do veículo: ");
             renavam = input.nextLine();
 
-        } while (renavam.length() != 7);
+            Pattern letras = Pattern.compile("^[A-Z]+$");
+
+            if(renavam.length() == 9 || renavam.length() == 11) {
+                if (letras.matcher(renavam).find()){
+                    System.out.println("\n\t\t O RENAVAM deve conter apenas números!\n");
+                    renavam = "";
+                }
+            } else {
+                System.out.println("\n\t\t É necessário informar o RENAVAM válido (com 9 ou 11 algarismos)!\n");
+            }
+
+        } while (renavam.length() != 9 && renavam.length() != 11);
 
         Veiculo veiculo = buscaVeiculo(placa, renavam);
         System.out.println(veiculo);
@@ -59,8 +71,7 @@ public class AutuacaoTransitoController {
         System.out.println("\nAgora informe as multas a ser inserida no veículo multado:");
         do {
             System.out.println("\t- Informe a classificação da multa: \n");
-            System.out.println("\t1 - LEVE\n\t2 - MÉDIA\n\t3 - GRAVE\n\t4 - GRAVÍSSIMA\n");
-            System.out.println("\n\t Opção: ");
+            System.out.print("\t\t1 - Leve\n\t\t2 - MÉDIA\n\t\t3 - GRAVE\n\t\t4 - GRAVÍSSIMA\n\t Opção: ");
 
             try {
                 opcao = input.nextInt();
@@ -95,7 +106,7 @@ public class AutuacaoTransitoController {
             String aux2 = "";
 
             try {
-                System.out.println("\n\t- Informe o código da multa (apenas números): \n");
+                System.out.print("\n\t- Informe o código da multa (apenas números): ");
                 id = Integer.parseInt(input.nextLine());
 
                 codigo = "" + id;
@@ -105,11 +116,11 @@ public class AutuacaoTransitoController {
                 codigo = aux1 + "-" + aux2;
 
                 if (buscaMulta(codigo) == null) {
-                    System.out.println("\n\t\t Não existe nenhuma multa com esse código!\n");
+                    System.out.println("\n\t\t Não existe nenhuma multa com esse código!");
                     codigo = "";
                 }
             } catch (NumberFormatException e) {
-                System.out.println("\n\t\t O campo código aceita somente números!\n");
+                System.out.println("\n\t\t O campo código aceita somente números!");
             }
         } while (!codigo.isEmpty());
 
@@ -117,21 +128,21 @@ public class AutuacaoTransitoController {
 
         // Entrada do atributo estado da autuacao
         do {
-            System.out.println("\t- Informe o estadodo da autuacao: \n");
+            System.out.print("\t- Informe o estado da autuação de trânsito: ");
             estado = input.nextLine();
 
             if (estado.isEmpty()) {
-                System.out.println("\n\t\t É necessário informar a estado da autuacao!\n");
+                System.out.println("\n\t\t É necessário informar a estado da autuação!\n");
             }
         } while (estado.isEmpty());
 
         // Entrada do atributo municipio da autuacao
         do {
-            System.out.println("\t- Informe o municipio da autuacao: \n");
+            System.out.print("\t- Informe o município da autuação de trânsito: ");
             municipio = input.nextLine();
 
             if (municipio.isEmpty()) {
-                System.out.println("\n\t\t É necessário informar o municipio da autuacao!\n");
+                System.out.println("\n\t\t É necessário informar o município da autuação!\n");
             }
         } while (municipio.isEmpty());
 
@@ -146,14 +157,14 @@ public class AutuacaoTransitoController {
 
         System.out.println("\nInforme o Id da autuação de trânsito que deseja excluir:");
         do {
-            System.out.println("\t- Escreva o ID da autuacão: \n");
+            System.out.print("\t- Escreva o ID da autuacão: ");
             try {
                 id = Integer.parseInt(input.nextLine());
 
                 if(buscaAutuacao(id) != null){
                     valid = false;
                 } else {
-                    System.out.println("\n\t\t Autuação de trânsito com ID " + id + " não existe!");
+                    System.out.println("\n\t\t Autuação de trânsito com ID " + id + " não existe! \n");
                 }
             } catch (NumberFormatException e){
                 System.out.println("\n\t\t O campo opção aceita somente números!\n");

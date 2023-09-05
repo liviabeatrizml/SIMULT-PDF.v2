@@ -59,8 +59,7 @@ public class MultaController {
         // Entrada do atributo classificação, pontos e valor da multa
         do {
             System.out.println("\t- Informe a classificação da multa: \n");
-            System.out.println("\t1 - LEVE\n\t2 - MÉDIA\n\t3 - GRAVE\n\t4 - GRAVÍSSIMA\n");
-            System.out.println("\n\t Opção: ");
+            System.out.print("\t\t1. Leve\n\t\t2. Média\n\t\t3. Grave\n\t\t4. Gravíssima\n\t\tOpção: ");
 
             try {
                 opcao = Integer.parseInt(input.nextLine());
@@ -142,7 +141,7 @@ public class MultaController {
             String aux2 = "";
 
             try {
-                System.out.println("\t- Informe o código da multa (apenas números): \n");
+                System.out.print("\t- Informe o código da multa (apenas números): ");
                 id = Integer.parseInt(input.nextLine());
 
                 codigo = "" + id;
@@ -161,7 +160,12 @@ public class MultaController {
 
     public static void verDadosMulta(){
         Multa multa = buscarMulta();
-        System.out.println(multa);
+
+        if (multa != null){
+            System.out.println(multa);
+        } else {
+            System.out.println("\n\t\t Nenhuma multa cadastrada com essas informações!\n");
+        }
     }
 
     public static void listaMultas(){
@@ -174,7 +178,7 @@ public class MultaController {
                 System.out.println(multa);
             }
         } else {
-            System.out.println("Nenhuma multa cadastrada no sistema:");
+            System.out.println("\n\t\t Nenhuma multa cadastrada no sistema!\n");
         }
     }
 
@@ -188,7 +192,7 @@ public class MultaController {
                 System.out.println(multa);
             }
         } else {
-            System.out.println("Nenhuma multa cadastrada com essa classificação");
+            System.out.println("\n\t\t Nenhuma multa cadastrada com essa classificação!\n");
         }
     }
 }
