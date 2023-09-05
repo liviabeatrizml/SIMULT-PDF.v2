@@ -1,36 +1,43 @@
 # SIMULT-PDF 2.0
-> O SIMULT-PDF é um sistema de monitoramento/cadastramento de multas, desenvolvido inicialmente na linguagem Portugol, com o intuito de aprimorar a lógica de programação. O sistema elaborado na disciplina de Laboratório de Algoritmos é simples e consiste na construção de um menu principal para auxiliar nas tomadas de decisões.
-Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anterior, através do direcionamento ao acesso conforme o tipo de ator (usuário ou administrador) selecionado. Dessa forma, são acrescidas novas funcionalidades - além da básica geração de multas e relatórios de trânsito - ao novo programa implementado na linguagem de programação Java.
+> O SIMULT-PDF é um sistema de monitoramento/cadastramento de multas, desenvolvido inicialmente na linguagem Portugol, com o intuito de aprimorar a lógica de programação. O sistema elaborado na disciplina de Laboratório de Algoritmos e Estrutura de Dados II é simples e consiste na construção de um menu principal para auxiliar nas tomadas de decisões.
+Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anterior, visando mais especificamente a parte do administrador. Dessa forma, são acrescidas novas funcionalidades - além da básica geração de multas e relatórios de trânsito - ao novo programa implementado na linguagem de programação Java.
 
 ## :clipboard: Requisitos
 
  - Funcionais
-	 - [RF001] Permitir o login do administrador do sistema
-	 - [RF002] Permitir a consulta do veículo pelo usuário
-	 - [RF003] Permitir que usuários consigam listar suas multas
-	 - [RF004] Permitir que o administrador cadastre multas
-	 - [RF005] Permitir que o administrador exclua multas
-	 - [RF006] Permitir que o administrador consulte veículo
-	 - [RF007] O sistema deve gerar um relatório sobre a multa
-	 - [RF008] Permitir que o usuário abra recurso sobre uma multa
-	 - [RF009] O usuário pode realizar o pagamento da multa
+	 - [RF001] Criar novos usuário com permissão de administrador;
+	 - [RF002] Administrador pode entrar no sistema;
+	 - [RF003] Permitir que o administrador buscar por veículos;
+	 - [RF004] O administrador pode visualizar os dados veículos; 
+	 - [RF005] Permitir que o administrador realizar busca por multas; 
+	 - [RF006] Permitir que o administrador visualize as informações de uma multa; 
+	 - [RF007] O administrador pode vincular multas a veículos; 
+	 - [RF008] Permitir que o administrador excluir multas em veículos; 
+	 - [RF009] O administrador pode gerar relatório de multa vinculados no dia; 
+	 - [RF010] O administrador pode gerar relatório com o histórico de todas as suas ações. 
 	 
  - Não Funcionais
-	 - [RNF001] O sistema deve ser implementado em linguagem Java
-	 - [RNF002] Bloquear acesso do administrador ao programa caso erre 3 vezes o login
+	 - [RNF001] Deve haver criptografia da senha dos usuários;
+	 - [RNF002] Deve ser bloqueado acesso ao sistema caso as credenciais tenham sido colocadas 3 vezes seguidas erradas;
+	 - [RNF003] O administrador deve ser notificado do sucesso ou fracasso da execução de uma operação;
+	 - [RNF004] O sistema deve ser implementado em linguagem Java.
 
 ## :paperclip: Artefatos
- - Diagrama de Caso e Uso
-
+- Diagrama de Caso e Uso
 ![Diagrama de Caso e Uso](Diagramas/UseCaseDiagram_Teste_de_Software.png)
 
  - Diagrama de Classe
-
 ![Diagrama de Classe](Diagramas/ClassDiagram_Teste_de_Software.png)
+
+ - Banco de Dados: Modelo Lógico
+![Modelo Lógico](Banco_de_dados/ModeloLogicoBD_Teste_De_Software.png)
 
 ## :hammer_and_wrench: Realização de Teste
 
- - [ ] XXX
+ - [ ] Teste de Unidade
+ - [ ] Teste de Integração 
+ - [ ] Teste de Aceitação
+ - [ ] Teste Funcional
 
 ## :family_man_woman_girl_boy: Equipe
 :man_teacher: Professor: [Alysson Filgueira Milanez](https://github.com/alyssonfm). </br>
