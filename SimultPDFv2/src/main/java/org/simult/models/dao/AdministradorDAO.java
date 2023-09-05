@@ -187,7 +187,7 @@ public class AdministradorDAO {
         Connection con = conexao.getConexao();
 
         try {
-            PreparedStatement sql = con.prepareStatement("SELECT tbAdministrador FROM administrador WHERE tbAdministrador_Login = ?;");
+            PreparedStatement sql = con.prepareStatement("SELECT * FROM administrador WHERE tbAdministrador_Login = ?;");
             sql.setString(1, login);
 
             ResultSet rs = null;
@@ -201,7 +201,7 @@ public class AdministradorDAO {
             rs = sql.executeQuery();
 
             while (rs.next()){
-                id = rs.getInt("tbAdministrador_");
+                id = rs.getInt("tbAdministrador_Id");
                 nome = rs.getString("tbAdministrador_Nome");
                 email = rs.getString("tbAdministrador_Email");
                 senha = rs.getString("tbAdministrador_Senha");

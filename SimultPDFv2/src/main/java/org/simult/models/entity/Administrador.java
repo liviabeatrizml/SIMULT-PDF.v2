@@ -1,11 +1,16 @@
 package org.simult.models.entity;
 
+import java.util.LinkedList;
+import java.util.Scanner;
+
 public class Administrador{
     private int id;
     private String nome;
     private String email;
     private String login;
     private String senha;
+
+    //private static final LinkedList<Administrador, String> acoes = new LinkedList<>();
 
     public Administrador(int id, String nome, String email, String login, String senha) {
         this.id = id;
