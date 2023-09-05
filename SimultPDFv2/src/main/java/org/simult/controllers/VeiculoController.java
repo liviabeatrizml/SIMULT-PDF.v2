@@ -136,8 +136,7 @@ public class VeiculoController {
         // Entrada do atributo especie do veículo
         do {
             System.out.println("\t- Informe a especie do veículo: \n");
-            System.out.println("\t1 - PASSAGEIRO\n\t2 - CARGA\n\t3 - MISTO\n\t4 - COMPETIÇÃO\n\t5 - TRAÇÃO\n\t6 - ESPECIAL\n\t7 - COLEÇÃO\n");
-            System.out.println("\n\t Opção: ");
+            System.out.println("\t\t1 - PASSAGEIRO\n\t\t2 - CARGA\n\t\t3 - MISTO\n\t\t4 - COMPETIÇÃO\n\t\t5 - TRAÇÃO\n\t\t6 - ESPECIAL\n\t\t7 - COLEÇÃO\n\tOpção: ");
 
             try {
                 opcao = Integer.parseInt(input.nextLine());
@@ -232,7 +231,7 @@ public class VeiculoController {
 
         // Entrada do valor da placa do veículo
         do {
-            System.out.println("\t- Escreva a placa do veículo: \n");
+            System.out.print("\t- Escreva a PLACA do veículo: ");
             placa = input.nextLine().toUpperCase();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
@@ -251,18 +250,18 @@ public class VeiculoController {
 
         // Entrada do valor do renavam do veículo
         do {
-            System.out.println("\t- Informe o renavam do veículo: \n");
+            System.out.print("\t- Informe o RENAVAM do veículo: ");
             renavam = input.nextLine();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
 
             if(renavam.length() == 9 || renavam.length() == 11) {
                 if (letras.matcher(renavam).find()){
-                    System.out.println("\n\t\t O renavam deve conter apenas números!\n");
+                    System.out.println("\n\t\t O RENAVAM deve conter apenas números!\n");
                     renavam = "";
                 }
             } else {
-                System.out.println("\n\t\t É necessário informar o renavam válido (com 9 ou 11 algarismos)!\n");
+                System.out.println("\n\t\t É necessário informar o RENAVAM válido (com 9 ou 11 algarismos)!\n");
             }
 
         } while (renavam.length() != 9 && renavam.length() != 11);
@@ -272,7 +271,13 @@ public class VeiculoController {
 
     public static void verDadosVeiculo(){
         Veiculo veiculo = buscarVeiculo();
-        System.out.println(veiculo);
+
+        if(veiculo != null){
+            System.out.println(veiculo);
+        } else {
+            System.out.println("\n\t\t Nenhum veículo cadastrado com essas informações!\n");
+        }
+
     }
 
 }

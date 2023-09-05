@@ -131,4 +131,19 @@ public class Veiculo {
     public void setMultas(ArrayList<Multa> multas) {
         this.multas = multas;
     }
+
+    @Override
+    public String toString() {
+        return "Veiculo ->" +
+                "\n\tProprietario: " + proprietario + '\'' +
+                "\n\tPlaca: " + placa + '\'' +
+                "\tRenavam: " + renavam + '\'' +
+                "\tChassi: " + chassi + '\'' +
+                "\n\tEstado de registro: " + estadoRegistro + '\'' +
+                "\t\tMunicipio de registro: " + municipioRegistro + '\'' +
+                "\n\tCor: " + cor + '\'' +
+                "\tMarca: " + marca + '\'' +
+                "\tModelo: " + modelo + '\'' +
+                "\n\tEspecie: " + especie;
+    }
 }
