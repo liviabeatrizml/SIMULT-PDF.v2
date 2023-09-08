@@ -37,10 +37,17 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
 
 ## :hammer_and_wrench: Realização de Teste
 
+ - Teste Estrutural
+	 - Fluxo de Controle
+	 - Fluxo de Dados
+ - Teste Funcional
+	 - Partição por Equivalência
+	 - Analise do valor limite
+	 - Grafo de Causo-Efeito
+	 
  - [ ] Teste de Unidade
- - [ ] Teste de Integração 
+ - [ ] Teste de Integração
  - [ ] Teste de Aceitação
- - [ ] Teste Funcional
 
 ## :family_man_woman_girl_boy: Equipe
 :man_teacher: Professor: [Alysson Filgueira Milanez](https://github.com/alyssonfm). </br>
