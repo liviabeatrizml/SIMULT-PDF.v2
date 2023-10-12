@@ -1,20 +1,20 @@
-package org.simult.connection.dao;
+package org.simult.models.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.connection.bd.Conexao;
-import org.simult.connection.entity.Administrador;
-import org.simult.connection.entity.AutuacaoTransito;
-import org.simult.connection.entity.Multa;
-import org.simult.connection.entity.Veiculo;
+import org.simult.models.bd.Conexao;
+import org.simult.models.entity.Administrador;
+import org.simult.models.entity.AutuacaoTransito;
+import org.simult.models.entity.Multa;
+import org.simult.models.entity.Veiculo;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static org.simult.connection.dao.AdministradorDAO.buscaAdministrador;
-import static org.simult.connection.dao.MultaDAO.buscaMulta;
-import static org.simult.connection.dao.VeiculoDAO.buscaVeiculo;
+import static org.simult.models.dao.AdministradorDAO.buscaAdministrador;
+import static org.simult.models.dao.MultaDAO.buscaMulta;
+import static org.simult.models.dao.VeiculoDAO.buscaVeiculo;
 
 public class AutuacaoTransitoDAO {
     public static boolean insereAutuacao(@NotNull AutuacaoTransito autuacao){

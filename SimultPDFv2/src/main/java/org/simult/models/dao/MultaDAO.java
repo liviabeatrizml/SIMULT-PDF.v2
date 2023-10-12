@@ -1,9 +1,9 @@
-package org.simult.connection.dao;
+package org.simult.models.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.connection.bd.Conexao;
-import org.simult.connection.entity.Multa;
+import org.simult.models.bd.Conexao;
+import org.simult.models.entity.Multa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class MultaDAO {
+
+/*
     public static boolean insereMulta(@NotNull Multa multa){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();
@@ -37,7 +39,7 @@ public class MultaDAO {
         }
     }
 
-/*
+
     public static boolean editaDestricaoMulta(@NotNull Multa multa){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();

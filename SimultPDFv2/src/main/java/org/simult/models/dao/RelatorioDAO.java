@@ -1,19 +1,17 @@
-package org.simult.connection.dao;
+package org.simult.models.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.connection.bd.Conexao;
-import org.simult.connection.entity.*;
+import org.simult.models.bd.Conexao;
+import org.simult.models.entity.Administrador;
+import org.simult.models.entity.AutuacaoTransito;
+import org.simult.models.entity.Relatorio;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.Objects;
-
-import static org.simult.connection.dao.AdministradorDAO.buscaAdministrador;
-import static org.simult.connection.dao.AutuacaoTransitoDAO.buscaAutuacao;
-import static org.simult.connection.dao.RelatorioAutuacaoDAO.*;
 
 public class RelatorioDAO {
     public static boolean insereRelatorio(@NotNull Relatorio relatorio){
@@ -37,7 +35,7 @@ public class RelatorioDAO {
             int idRelatorio = buscaIdRelatorio(relatorio.getAutor().getId(), relatorio.getDataHora());
 
             for (AutuacaoTransito autuacao: relatorio.getAutuacoesTransito()) {
-                insereRelatorioDeAutuacao(idRelatorio, autuacao.getId());
+                RelatorioAutuacaoDAO.insereRelatorioDeAutuacao(idRelatorio, autuacao.getId());
             };
 
             return true;
@@ -109,10 +107,10 @@ public class RelatorioDAO {
                 idAutor = rs.getInt("tbAdministrador_Id");
             }
 
-            autor = buscaAdministrador(idAutor);
+            autor = AdministradorDAO.buscaAdministrador(idAutor);
 
-            for (int idAutuacoes: Objects.requireNonNull(buscaAutuacoesRelatorio(idRelatorio))) {
-                acoes.add(buscaAutuacao(idAutuacoes));
+            for (int idAutuacoes: Objects.requireNonNull(RelatorioAutuacaoDAO.buscaAutuacoesRelatorio(idRelatorio))) {
+                acoes.add(AutuacaoTransitoDAO.buscaAutuacao(idAutuacoes));
             }
 
             rs.close();
@@ -130,4 +128,5 @@ public class RelatorioDAO {
             return null;
         }
     }
+
 }

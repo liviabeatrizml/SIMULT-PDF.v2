@@ -1,9 +1,9 @@
-package org.simult.connection.dao;
+package org.simult.models.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.connection.bd.Conexao;
-import org.simult.connection.entity.Veiculo;
+import org.simult.models.bd.Conexao;
+import org.simult.models.entity.Veiculo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
