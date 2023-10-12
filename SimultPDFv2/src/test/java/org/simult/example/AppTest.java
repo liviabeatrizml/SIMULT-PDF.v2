@@ -1,4 +1,4 @@
-package org.simult;
+package org.simult.example;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
