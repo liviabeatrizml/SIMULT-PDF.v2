@@ -1,4 +1,4 @@
-package org.simult.connection.bd;
+package org.simult.models.bd;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
