@@ -1,9 +1,9 @@
-package org.simult.models.dao;
+package org.simult.connection.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.models.bd.Conexao;
-import org.simult.models.entity.Administrador;
+import org.simult.connection.bd.Conexao;
+import org.simult.connection.entity.Administrador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -136,7 +136,8 @@ public class AdministradorDAO {
 
             return true;
         } catch (SQLException e){
-            e.printStackTrace();
+            String mensagemDeErro = "Ocorreu um erro durante a execução do SQL: " + e.getMessage();
+            System.err.println(mensagemDeErro);
             return false;
         }
     }
@@ -159,10 +160,10 @@ public class AdministradorDAO {
             rs = sql.executeQuery();
 
             while (rs.next()){
-                nome = rs.getString("tbAdminitrador_Nome");
-                email = rs.getString("tbAdminitrador_Email");
+                nome = rs.getString("tbAdministrador_Nome");
+                email = rs.getString("tbAdministrador_Email");
                 login = rs.getString("tbAdministrador_Login");
-                senha = rs.getString("tbAdminitrador_Senha");
+                senha = rs.getString("tbAdministrador_Senha");
             }
 
             rs.close();

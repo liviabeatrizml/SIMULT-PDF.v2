@@ -1,7 +1,6 @@
-package org.simult.models.entity;
+package org.simult.connection.entity;
 
 import java.util.LinkedList;
-import java.util.Scanner;
 
 public class Administrador{
     private int id;
@@ -9,8 +8,7 @@ public class Administrador{
     private String email;
     private String login;
     private String senha;
-
-    //private static final LinkedList<Administrador, String> acoes = new LinkedList<>();
+    private LinkedList<AutuacaoTransito> acoes = new LinkedList<>();
 
     public Administrador(int id, String nome, String email, String login, String senha) {
         this.id = id;
@@ -66,5 +64,14 @@ public class Administrador{
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public LinkedList<AutuacaoTransito> getAcoes() {
+        return acoes;
+    }
+
+    public void setAcoes(AutuacaoTransito acao) {
+        this.acoes.add(acao);
+    }
+
 
 }

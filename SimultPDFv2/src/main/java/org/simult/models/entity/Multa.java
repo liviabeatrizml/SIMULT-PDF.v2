@@ -1,6 +1,4 @@
-package org.simult.models.entity;
-
-import java.util.Calendar;
+package org.simult.connection.entity;
 
 public class Multa {
     private String codigo;
@@ -57,4 +55,12 @@ public class Multa {
         this.valor = valor;
     }
 
+    @Override
+    public String toString() {
+        return "\n\t\tCódigo: " + codigo +
+                "\n\t\tDescrição: " + descricao +
+                "\n\t\tClassificacao: " + classificacao +
+                "\t\tPontos: " + pontos +
+                "\t\tValor: " + valor;
+    }
 }

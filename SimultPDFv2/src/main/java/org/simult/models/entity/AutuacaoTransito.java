@@ -1,4 +1,4 @@
-package org.simult.models.entity;
+package org.simult.connection.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -41,6 +41,7 @@ public class AutuacaoTransito {
     }
 
     public AutuacaoTransito(Administrador autor, Veiculo veiculo, Multa multa, String estado, String municipio) {
+        this.id = 0;
         this.autor = autor;
         this.veiculo = veiculo;
         this.multa = multa;
@@ -119,4 +120,15 @@ public class AutuacaoTransito {
         this.vencimento = vencimento;
     }
 
+    @Override
+    public String toString() {
+        return "\n\t\tIdentificador: " + id +
+                "\n\t\tAutor: " + autor.getNome() +
+                "\n\t\tVeiculo: " + veiculo.getProprietario() +
+                "\n\t\t\tPlaca: " + veiculo.getPlaca() + " \t-\tRenavam: " + veiculo.getRenavam() +
+                "\n\t\tMulta: " + multa.getCodigo() +
+                "\n\t\t\tDescrição da multa: " + multa.getDescricao() +
+                "\n\t\tEstado: " + estado  + "\tMunicipio: " + municipio +
+                "\n\t\tData: " + dataHora + "\tVencimento: " + vencimento;
+    }
 }

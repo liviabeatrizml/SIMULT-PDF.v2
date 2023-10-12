@@ -1,9 +1,9 @@
-package org.simult.models.dao;
+package org.simult.connection.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.models.bd.Conexao;
-import org.simult.models.entity.Multa;
+import org.simult.connection.bd.Conexao;
+import org.simult.connection.entity.Multa;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ public class MultaDAO {
         Connection con = conexao.getConexao();
 
         try {
-            PreparedStatement sql = con.prepareStatement("INSERT INTO multa (tbMulta_Codigo, tbMulta_Descricao, tbMulta_Classificacao, tbMulta_Pontos, tbMulta_Valor) VALUES (?, ?, ?, ?, ?);");
+            PreparedStatement sql = con.prepareStatement("INSERT INTO multa (tbMulta_Codigo, tbMulta_Descrição, tbMulta_Classificacao, tbMulta_Pontos, tbMulta_Valor) VALUES (?, ?, ?, ?, ?);");
 
             sql.setString(1, multa.getCodigo());
             sql.setString(2, multa.getDescricao());
@@ -37,6 +37,7 @@ public class MultaDAO {
         }
     }
 
+/*
     public static boolean editaDestricaoMulta(@NotNull Multa multa){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();
@@ -141,6 +142,7 @@ public class MultaDAO {
             return false;
         }
     }
+*/
 
     @Nullable
     public static Multa buscaMulta(String codigo){
@@ -152,8 +154,9 @@ public class MultaDAO {
             sql.setString(1, codigo);
 
             ResultSet rs = null;
+            codigo = "";
             String descricao = "";
-            String estado = "";
+            String classificacao = "";
 
             int pontos = 0;
             double valor = 0.0;
@@ -162,8 +165,8 @@ public class MultaDAO {
 
             while (rs.next()){
                 codigo = rs.getString("tbMulta_Codigo");
-                descricao = rs.getString("tbMulta_Descricao");
-                estado = rs.getString("tbMulta_Estado");
+                descricao = rs.getString("tbMulta_Descrição");
+                classificacao = rs.getString("tbMulta_Classificacao");
                 pontos = rs.getInt("tbMulta_pontos");
                 valor = rs.getDouble("tbMulta_Valor");
             }
@@ -172,7 +175,7 @@ public class MultaDAO {
             sql.close();
 
             if(!codigo.isEmpty()){
-                return new Multa(codigo, descricao, estado, pontos, valor);
+                return new Multa(codigo, descricao, classificacao, pontos, valor);
             }
 
             return null;
@@ -206,7 +209,7 @@ public class MultaDAO {
 
             while (rs.next()){
                 codigo = rs.getString("tbMulta_Codigo");
-                descricao = rs.getString("tbMulta_Descricao");
+                descricao = rs.getString("tbMulta_Descrição");
                 classificacao = rs.getString("tbMulta_Classificacao");
                 pontos = rs.getInt("tbMulta_pontos");
                 valor = rs.getDouble("tbMulta_Valor");
@@ -254,7 +257,7 @@ public class MultaDAO {
 
             while (rs.next()){
                 codigo = rs.getString("tbMulta_Codigo");
-                descricao = rs.getString("tbMulta_Descricao");
+                descricao = rs.getString("tbMulta_Descrição");
                 pontos = rs.getInt("tbMulta_pontos");
                 valor = rs.getDouble("tbMulta_Valor");
 

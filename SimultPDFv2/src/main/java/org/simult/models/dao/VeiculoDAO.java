@@ -1,9 +1,9 @@
-package org.simult.models.dao;
+package org.simult.connection.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.models.bd.Conexao;
-import org.simult.models.entity.Veiculo;
+import org.simult.connection.bd.Conexao;
+import org.simult.connection.entity.Veiculo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,6 +41,7 @@ public class VeiculoDAO {
         }
     }
 
+/*
     public static boolean editaChassiVeiculo(@NotNull Veiculo veiculo){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();
@@ -238,6 +239,7 @@ public class VeiculoDAO {
             return false;
         }
     }
+ */
 
     @Nullable
     public static Veiculo buscaVeiculo(String placa, String renavam){
@@ -250,6 +252,8 @@ public class VeiculoDAO {
             sql.setString(2, renavam);
 
             ResultSet rs = null;
+            placa = "";
+            renavam = "";
             String chassi = "";
             String proprietario = "";
             String estadoRegistro = "";
@@ -262,8 +266,8 @@ public class VeiculoDAO {
             rs = sql.executeQuery();
 
             while (rs.next()){
-                placa = rs.getString("tbMulta_Codigo");
-                renavam = rs.getString("tbMulta_Renavam");
+                placa = rs.getString("tbVeiculo_Placa");
+                renavam = rs.getString("tbVeiculo_Renavam");
                 chassi = rs.getString("tbVeiculo_Chassi");
                 proprietario = rs.getString("tbVeiculo_Proprietario");
                 estadoRegistro = rs.getString("tbVeiculo_EstadoRegistro");
@@ -274,7 +278,7 @@ public class VeiculoDAO {
                 especie = rs.getString("tbVeiculo_Especie");
             }
 
-            if(!placa.isEmpty() && renavam.isEmpty()){
+            if(!placa.isEmpty() && !renavam.isEmpty()){
                 return new Veiculo(placa, renavam, chassi, proprietario, estadoRegistro, municipioRegistro, cor, marca, modelo, especie);
             }
 

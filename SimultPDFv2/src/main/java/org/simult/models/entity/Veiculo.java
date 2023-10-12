@@ -1,4 +1,4 @@
-package org.simult.models.entity;
+package org.simult.connection.entity;
 
 import java.util.ArrayList;
 
@@ -134,16 +134,15 @@ public class Veiculo {
 
     @Override
     public String toString() {
-        return "Veiculo ->" +
-                "\n\tProprietario: " + proprietario + '\'' +
-                "\n\tPlaca: " + placa + '\'' +
-                "\tRenavam: " + renavam + '\'' +
-                "\tChassi: " + chassi + '\'' +
-                "\n\tEstado de registro: " + estadoRegistro + '\'' +
-                "\t\tMunicipio de registro: " + municipioRegistro + '\'' +
-                "\n\tCor: " + cor + '\'' +
-                "\tMarca: " + marca + '\'' +
-                "\tModelo: " + modelo + '\'' +
-                "\n\tEspecie: " + especie;
+        return "\n\t\tProprietario: " + proprietario +
+                "\n\t\tPlaca: " + placa +
+                "\t\tRenavam: " + renavam +
+                "\t\tChassi: " + chassi +
+                "\n\t\tEstado de registro: " + estadoRegistro +
+                "\t\t\tMunicipio de registro: " + municipioRegistro +
+                "\n\t\tCor: " + cor +
+                "\t\t    Marca: " + marca +
+                "\t\t    Modelo: " + modelo +
+                "\n\t\tEspecie: " + especie;
     }
 }

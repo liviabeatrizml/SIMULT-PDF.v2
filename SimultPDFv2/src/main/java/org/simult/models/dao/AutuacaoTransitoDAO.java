@@ -1,21 +1,20 @@
-package org.simult.models.dao;
+package org.simult.connection.dao;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.simult.models.bd.Conexao;
-import org.simult.models.entity.Administrador;
-import org.simult.models.entity.AutuacaoTransito;
-import org.simult.models.entity.Multa;
-import org.simult.models.entity.Veiculo;
+import org.simult.connection.bd.Conexao;
+import org.simult.connection.entity.Administrador;
+import org.simult.connection.entity.AutuacaoTransito;
+import org.simult.connection.entity.Multa;
+import org.simult.connection.entity.Veiculo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-import static org.simult.models.dao.AdministradorDAO.buscaAdministrador;
-import static org.simult.models.dao.MultaDAO.buscaMulta;
-import static org.simult.models.dao.VeiculoDAO.buscaVeiculo;
+import static org.simult.connection.dao.AdministradorDAO.buscaAdministrador;
+import static org.simult.connection.dao.MultaDAO.buscaMulta;
+import static org.simult.connection.dao.VeiculoDAO.buscaVeiculo;
 
 public class AutuacaoTransitoDAO {
     public static boolean insereAutuacao(@NotNull AutuacaoTransito autuacao){
@@ -23,16 +22,25 @@ public class AutuacaoTransitoDAO {
         Connection con = conexao.getConexao();
 
         try {
-            PreparedStatement sql = con.prepareStatement("INSERT INTO autuaca_transito (tbAdministrador_Id, tbVeiculo_Placa, tbVeiculo_Renavam, tbMulta_Codigo, tbAutuacaoTransito_Estado, tbAutuacaoTransito_Municipio, tbAutuacaoTransito_DataHora, tbAutuacaoTransito_Vencimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
+            PreparedStatement sql = con.prepareStatement("INSERT INTO autuacao_transito (tbAdministrador_Id, tbVeiculo_Placa, tbVeiculo_Renavam, tbMulta_Codigo, tbAutuacaoTransito_Estado, tbAutuacaoTransito_Municipio, tbAutuacaoTransito_DataHora, tbAutuacaoTransito_Vencimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
 
             sql.setInt(1, autuacao.getAutor().getId());
             sql.setString(2, autuacao.getVeiculo().getPlaca());
             sql.setString(3, autuacao.getVeiculo().getRenavam());
             sql.setString(4, autuacao.getMulta().getCodigo());
-            sql.setString(4, autuacao.getEstado());
-            sql.setString(4, autuacao.getMunicipio());
-            sql.setString(4, autuacao.getDataHora());
-            sql.setString(4, autuacao.getVencimento());
+            sql.setString(5, autuacao.getEstado());
+            sql.setString(6, autuacao.getMunicipio());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss z");
+            LocalDateTime localTimeDH = LocalDateTime.from(formatter.parse(autuacao.getDataHora()));
+            Timestamp timeDH = Timestamp.valueOf(localTimeDH);
+
+            sql.setTimestamp(7, timeDH);
+
+            LocalDateTime localTimeV = LocalDateTime.from(formatter.parse(autuacao.getVencimento()));
+            Timestamp timeV = Timestamp.valueOf(localTimeV);
+
+            sql.setTimestamp(8, timeV);
 
             sql.executeUpdate();
             sql.close();
@@ -45,6 +53,8 @@ public class AutuacaoTransitoDAO {
             return false;
         }
     }
+
+/*
 
     public static boolean editaAutorAutuacao(@NotNull AutuacaoTransito autuacao){
         Conexao conexao = Conexao.getInstance();
@@ -158,7 +168,12 @@ public class AutuacaoTransitoDAO {
 
         try {
             PreparedStatement sql = con.prepareStatement("UPDATE autuacao_veiculo SET tbAutuacaoVeiculo_DataHora = ? WHERE tbAtuacaoVeiculo_Id = ?;");
-            sql.setString(1, autuacao.getDataHora());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss z"); //autuacao.getDataHora());
+            LocalDateTime localTimeDH = LocalDateTime.from(formatter.parse(autuacao.getDataHora()));
+            Timestamp timeDH = Timestamp.valueOf(localTimeDH);
+
+            sql.setTimestamp(1, timeDH);
             sql.setInt(2, autuacao.getId());
 
             sql.executeUpdate();
@@ -179,7 +194,12 @@ public class AutuacaoTransitoDAO {
 
         try {
             PreparedStatement sql = con.prepareStatement("UPDATE autuacao_veiculo SET tbAutuacaoVeiculo_Vencimento = ? WHERE tbAtuacaoVeiculo_Id = ?;");
-            sql.setString(1, autuacao.getVencimento());
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss z"); //autuacao.getDataHora());
+            LocalDateTime localTimeV = LocalDateTime.from(formatter.parse(autuacao.getVencimento()));
+            Timestamp timeV = Timestamp.valueOf(localTimeV);
+
+            sql.setTimestamp(1, timeV);
             sql.setInt(2, autuacao.getId());
 
             sql.executeUpdate();
@@ -193,6 +213,8 @@ public class AutuacaoTransitoDAO {
             return false;
         }
     }
+
+ */
 
     @Nullable
     public static AutuacaoTransito buscaAutuacao(int id){
@@ -246,6 +268,42 @@ public class AutuacaoTransitoDAO {
             System.err.println(mensagemDeErro);
 
             return null;
+        }
+    }
+
+    public static int buscaIdAutuacao(int idAdministrador, String dataHora){
+        Conexao conexao = Conexao.getInstance();
+        Connection con = conexao.getConexao();
+
+        try {
+            PreparedStatement sql = con.prepareStatement("SELECT * FROM autuacao_transito WHERE tbAdministrador_Id = ? AND tbAutuacaoTransito_DataHora = ?;");
+            sql.setInt(1, idAdministrador);
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy - HH:mm:ss z");
+            LocalDateTime localTimeDH = LocalDateTime.from(formatter.parse(dataHora));
+            Timestamp timeDH = Timestamp.valueOf(localTimeDH);
+
+            sql.setTimestamp(2, timeDH);
+
+            ResultSet rs = null;
+
+            int autuacaoId = 0;
+
+            rs = sql.executeQuery();
+
+            while (rs.next()){
+                autuacaoId = rs.getInt("tbAutuacaoTransito_Id");
+            }
+
+            rs.close();
+            sql.close();
+
+            return autuacaoId;
+        } catch (SQLException e){
+            String mensagemDeErro = "Ocorreu um erro durante a execução do SQL: " + e.getMessage();
+            System.err.println(mensagemDeErro);
+
+            return 0;
         }
     }
 

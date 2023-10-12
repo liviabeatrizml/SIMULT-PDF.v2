@@ -1,6 +1,5 @@
-package org.simult.models.bd;
+package org.simult.connection.bd;
 
-import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -34,15 +33,17 @@ public class Conexao {
     }
 
     //Metodo responsável por encerrar a conexão com o banco de dados
-    public void closeConnection(){
+    public boolean closeConnection(){
         try {
             if (conexcao != null) {
                 conexcao.close();
-                System.out.println("\nConexão fechada com sucesso.\n");
+                return true;
             }
         } catch (SQLException e) {
             System.out.println("\nFalha ao encerrar conexão: " + e.getMessage());
         }
+
+        return false;
     }
 
 }
