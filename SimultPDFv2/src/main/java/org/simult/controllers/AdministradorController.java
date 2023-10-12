@@ -3,15 +3,14 @@ package org.simult.controllers;
 import org.jetbrains.annotations.NotNull;
 import org.mindrot.jbcrypt.BCrypt;
 import org.simult.models.entity.Administrador;
-import org.simult.models.entity.Veiculo;
 
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 import static org.simult.controllers.AutuacaoTransitoController.cadastrarAutuacao;
 import static org.simult.controllers.AutuacaoTransitoController.removerAutuacao;
 import static org.simult.controllers.MultaController.verDadosMulta;
+import static org.simult.controllers.RelatorioController.criarRelatorio;
 import static org.simult.controllers.VeiculoController.verDadosVeiculo;
 import static org.simult.models.dao.AdministradorDAO.buscaAdministrador;
 import static org.simult.models.dao.AdministradorDAO.insereAdministrador;
@@ -114,7 +113,7 @@ public class AdministradorController{
     }
 
     public static boolean desvincularMulta(Administrador administrador){
-        return removerAutuacao();
+        return removerAutuacao(administrador);
     }
 
     public static void consultarVeiculo(){
@@ -126,7 +125,7 @@ public class AdministradorController{
     }
 
     public static boolean gerarRelatorio(Administrador administrador){
-        return false;
+        return criarRelatorio(administrador);
     }
 
 }

@@ -1,21 +1,20 @@
 package org.simult.controllers;
 
+import org.simult.models.entity.Administrador;
 import org.simult.models.entity.Relatorio;
-import org.simult.models.entity.Veiculo;
+
+import static org.simult.models.dao.RelatorioDAO.insereRelatorio;
 
 public class RelatorioController {
-    public Relatorio criarRelatorio(){
-        Veiculo veiculo = null;
 
-        // Entrada do atributo autor da multa
-        do {
-            System.out.println("\t- Informe o estado em que ocorreu a multa: \n");
+    public static boolean criarRelatorio(Administrador autor){
+        Relatorio relatorio = new Relatorio(autor);
 
-            if(veiculo == null) {
-                System.out.println("\t\t\n É necessário informar o estado em que ocorreu a multa!\n");
-            }
-        } while (veiculo == null);
-
-        return null;
+        if (insereRelatorio(relatorio)){
+            System.out.println("\n\t\tRelatorio -> " + relatorio);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

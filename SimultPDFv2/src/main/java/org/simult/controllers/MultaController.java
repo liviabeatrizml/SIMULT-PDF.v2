@@ -1,17 +1,14 @@
 package org.simult.controllers;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.simult.models.entity.Multa;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.simult.models.dao.MultaDAO.*;
-
 public class MultaController {
     private static final Scanner input = new Scanner(System.in);
 
+/*
     public static boolean criarMulta(){
         int id = 0;
         int opcao = 0;
@@ -30,23 +27,28 @@ public class MultaController {
             String aux2 = "";
 
             try {
-                System.out.println("\t- Informe o código da multa (apenas números): \n");
+                System.out.print("\t- Informe o código da multa (apenas números e de tamanho 5): ");
                 id = Integer.parseInt(input.nextLine());
 
-                codigo = "" + id;
-                aux1 = codigo.substring(0,3);
-                aux2 = codigo.substring(3, 5);
+                if (id < 10000 || id > 99999){
+                    System.out.println("\n\t\t Tamanho inválido do campo de código!\n");
+                } else {
+                    codigo = "" + id;
+                    aux1 = codigo.substring(0,3);
+                    aux2 = codigo.substring(3, 5);
 
-                codigo = aux1 + "-" + aux2;
+                    codigo = aux1 + "-" + aux2;
+                }
+
             } catch (NumberFormatException e){
                 System.out.println("\n\t\t O campo código aceita somente números!\n");
             }
 
-        } while (!codigo.isEmpty());
+        } while (codigo.isEmpty());
 
         // Entrada do atributo descrição da multa
         do {
-            System.out.println("\t- Informe a descrição da multa ocorreu a multa (Max. 100 caracteres):: \n");
+            System.out.print("\n\t- Informe a descrição da multa ocorreu a multa (Max. 100 caracteres): ");
             descricao = input.nextLine();
 
             if(descricao.isEmpty()) {
@@ -58,7 +60,7 @@ public class MultaController {
 
         // Entrada do atributo classificação, pontos e valor da multa
         do {
-            System.out.println("\t- Informe a classificação da multa: \n");
+            System.out.println("\n\t- Informe a classificação da multa: \n");
             System.out.print("\t\t1. Leve\n\t\t2. Média\n\t\t3. Grave\n\t\t4. Gravíssima\n\t\tOpção: ");
 
             try {
@@ -112,14 +114,19 @@ public class MultaController {
             String aux2 = "";
 
             try {
-                System.out.println("\t- Informe o código da multa (apenas números): \n");
+                System.out.print("\t- Informe o código da multa (apenas números): ");
                 id = Integer.parseInt(input.nextLine());
 
-                codigo = "" + id;
-                aux1 = codigo.substring(0, 3);
-                aux2 = codigo.substring(3, 5);
+                if (id < 10000 || id > 99999){
+                    System.out.println("\n\t\t Tamanho inválido do campo de código!\n");
+                } else {
+                    codigo = "" + id;
+                    aux1 = codigo.substring(0,3);
+                    aux2 = codigo.substring(3, 5);
 
-                codigo = aux1 + "-" + aux2;
+                    codigo = aux1 + "-" + aux2;
+                    System.out.println("\n\t\t\t" + codigo);
+                }
             } catch (NumberFormatException e) {
                 System.out.println("\n\t\t O campo código aceita somente números!\n");
             }
@@ -128,6 +135,7 @@ public class MultaController {
 
         return removeMulta(codigo);
     }
+*/
 
     public static Multa buscarMulta(){
         int id = 0;
@@ -144,16 +152,20 @@ public class MultaController {
                 System.out.print("\t- Informe o código da multa (apenas números): ");
                 id = Integer.parseInt(input.nextLine());
 
-                codigo = "" + id;
-                aux1 = codigo.substring(0, 3);
-                aux2 = codigo.substring(3, 5);
+                if (id < 10000 || id > 99999){
+                    System.out.println("\n\t\t Tamanho inválido do campo de código!\n");
+                } else {
+                    codigo = "" + id;
+                    aux1 = codigo.substring(0,3);
+                    aux2 = codigo.substring(3, 5);
 
-                codigo = aux1 + "-" + aux2;
+                    codigo = aux1 + "-" + aux2;
+                }
             } catch (NumberFormatException e) {
                 System.out.println("\n\t\t O campo código aceita somente números!\n");
             }
 
-        } while (!codigo.isEmpty());
+        } while (codigo.isEmpty());
 
         return buscaMulta(codigo);
     }
@@ -162,31 +174,31 @@ public class MultaController {
         Multa multa = buscarMulta();
 
         if (multa != null){
-            System.out.println(multa);
+            System.out.println("\n\tMulta -> " + multa);
         } else {
             System.out.println("\n\t\t Nenhuma multa cadastrada com essas informações!\n");
         }
     }
 
-    public static void listaMultas(){
-        ArrayList<Multa> multas = new ArrayList<>();
-        multas = buscaMultaGeral();
-
-        System.out.println("Multas cadastradas: \n");
-        if (multas != null){
-            for (Multa multa : multas) {
-                System.out.println(multa);
-            }
-        } else {
-            System.out.println("\n\t\t Nenhuma multa cadastrada no sistema!\n");
-        }
-    }
+//    public static void listaMultas(){
+//        ArrayList<Multa> multas = new ArrayList<>();
+//        multas = buscaMultaGeral();
+//
+//        System.out.println("Multas cadastradas: \n");
+//        if (multas != null){
+//            for (Multa multa : multas) {
+//                System.out.println(multa);
+//            }
+//        } else {
+//            System.out.println("\n\t\t Nenhuma multa cadastrada no sistema!\n");
+//        }
+//    }
 
     public static void listaMultas(String classificacao){
         ArrayList<Multa> multas = new ArrayList<>();
         multas = buscaMultaClassificacao(classificacao);
 
-        System.out.println("Multas " + classificacao + ": \n");
+        System.out.print("\n\tMultas " + classificacao + " -> ");
         if (multas != null){
             for (Multa multa : multas) {
                 System.out.println(multa);

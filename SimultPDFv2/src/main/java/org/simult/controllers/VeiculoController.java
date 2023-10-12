@@ -5,11 +5,13 @@ import org.simult.models.entity.Veiculo;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-import static org.simult.models.dao.VeiculoDAO.*;
+import static org.simult.models.dao.VeiculoDAO.buscaVeiculo;
+import static org.simult.models.dao.VeiculoDAO.insereVeiculo;
 
 public class VeiculoController {
     private static final Scanner input = new Scanner(System.in);
 
+/*
     public static boolean cadastrarVeiculo(){
         int opcao = 0;
 
@@ -28,7 +30,7 @@ public class VeiculoController {
 
         // Entrada do atributo proprietario do veículo
         do {
-            System.out.println("\t- Informe o nome do proprietário do veículo: \n");
+            System.out.print("\t- Informe o nome do proprietário do veículo: ");
             proprietario = input.nextLine().toUpperCase();
 
             if(proprietario.isEmpty()) {
@@ -38,7 +40,7 @@ public class VeiculoController {
 
         // Entrada do atributo placa do veículo
         do {
-            System.out.println("\t- Escreva a placa do veículo: \n");
+            System.out.print("\t- Escreva a placa do veículo (7 dígitos alfanuméricos): ");
             placa = input.nextLine().toUpperCase();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
@@ -57,7 +59,7 @@ public class VeiculoController {
 
         // Entrada do atributo renavam do veículo
         do {
-            System.out.println("\t- Informe o renavam do veículo: \n");
+            System.out.print("\t- Informe o renavam do veículo (9 ou 11 dígitos númericos): ");
             renavam = input.nextLine();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
@@ -75,7 +77,7 @@ public class VeiculoController {
 
         // Entrada do atributo chassi do veículo
         do {
-            System.out.println("\t- Informe o chassi do veículo (17 dígitos alfanuméricos): \n");
+            System.out.print("\t- Informe o chassi do veículo (17 dígitos alfanuméricos): ");
             chassi = input.nextLine();
 
             if(chassi.length() != 17) {
@@ -85,7 +87,7 @@ public class VeiculoController {
 
         // Entrada do atributo estadoRegistro do veículo
         do {
-            System.out.println("\t- Informe o estado de registro do veículo: \n");
+            System.out.print("\t- Informe o estado de registro do veículo: ");
             estadoRegistro = input.nextLine();
 
             if(estadoRegistro.isEmpty()) {
@@ -93,9 +95,9 @@ public class VeiculoController {
             }
         } while (estadoRegistro.isEmpty());
 
-        // Entrada do atributo cidaderregistro do veículo
+        // Entrada do atributo cidadeRegistro do veículo
         do {
-            System.out.println("\t- Informe o cidade de registro do veículo: \n");
+            System.out.print("\t- Informe o cidade de registro do veículo: ");
             cidadeRegistro = input.nextLine();
 
             if(cidadeRegistro.isEmpty()) {
@@ -105,7 +107,7 @@ public class VeiculoController {
 
         // Entrada do atributo marca do veículo
         do {
-            System.out.println("\t- Informe a marca do veículo: \n");
+            System.out.print("\t- Informe a marca do veículo: ");
             marca = input.nextLine();
 
             if(marca.isEmpty()) {
@@ -115,7 +117,7 @@ public class VeiculoController {
 
         // Entrada do atributo modelo do veículo
         do {
-            System.out.println("\t- Informe o modelo do veículo: \n");
+            System.out.print("\t- Informe o modelo do veículo: ");
             modelo = input.nextLine();
 
             if(modelo.isEmpty()) {
@@ -125,7 +127,7 @@ public class VeiculoController {
 
         // Entrada do atributo cor do veículo
         do {
-            System.out.println("\t- Informe a cor do veículo: \n");
+            System.out.println("\t- Informe a cor do veículo: ");
             cor = input.nextLine();
 
             if(cor.isEmpty()) {
@@ -136,7 +138,7 @@ public class VeiculoController {
         // Entrada do atributo especie do veículo
         do {
             System.out.println("\t- Informe a especie do veículo: \n");
-            System.out.println("\t\t1 - PASSAGEIRO\n\t\t2 - CARGA\n\t\t3 - MISTO\n\t\t4 - COMPETIÇÃO\n\t\t5 - TRAÇÃO\n\t\t6 - ESPECIAL\n\t\t7 - COLEÇÃO\n\tOpção: ");
+            System.out.print("\t\t1 - PASSAGEIRO\n\t\t2 - CARGA\n\t\t3 - MISTO\n\t\t4 - COMPETIÇÃO\n\t\t5 - TRAÇÃO\n\t\t6 - ESPECIAL\n\t\t7 - COLEÇÃO\n\tOpção: ");
 
             try {
                 opcao = Integer.parseInt(input.nextLine());
@@ -185,7 +187,7 @@ public class VeiculoController {
 
         // Entrada do valor da placa do veículo
         do {
-            System.out.println("\t- Escreva a placa do veículo: \n");
+            System.out.print("\t- Escreva a placa do veículo: ");
             placa = input.nextLine().toUpperCase();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
@@ -204,7 +206,7 @@ public class VeiculoController {
 
         // Entrada do valor do renavam do veículo
         do {
-            System.out.println("\t- Informe o renavam do veículo: \n");
+            System.out.print("\t- Informe o renavam do veículo: ");
             renavam = input.nextLine();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
@@ -222,6 +224,7 @@ public class VeiculoController {
 
         return removeVeiculo(placa, renavam);
     }
+*/
 
     public static Veiculo buscarVeiculo(){
         String placa = "";
@@ -273,7 +276,7 @@ public class VeiculoController {
         Veiculo veiculo = buscarVeiculo();
 
         if(veiculo != null){
-            System.out.println(veiculo);
+            System.out.println("\n\tVeículo ->" + veiculo);
         } else {
             System.out.println("\n\t\t Nenhum veículo cadastrado com essas informações!\n");
         }
