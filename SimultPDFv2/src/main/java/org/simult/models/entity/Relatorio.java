@@ -1,4 +1,4 @@
-package org.simult.connection.entity;
+package org.simult.models.entity;
 
 import org.jetbrains.annotations.NotNull;
 

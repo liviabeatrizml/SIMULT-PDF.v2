@@ -1,4 +1,4 @@
-package org.simult.connection.entity;
+package org.simult.models.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
