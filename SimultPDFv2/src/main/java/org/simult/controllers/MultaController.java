@@ -5,6 +5,9 @@ import org.simult.models.entity.Multa;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static org.simult.models.dao.MultaDAO.buscaMulta;
+import static org.simult.models.dao.MultaDAO.buscaMultaClassificacao;
+
 public class MultaController {
     private static final Scanner input = new Scanner(System.in);
 
@@ -68,22 +71,22 @@ public class MultaController {
 
                 switch (opcao){
                     case 1:
-                        classificacao = "Leve";
+                        classificacao = "LEVE";
                         pontos = 3;
                         valor = 88.38;                  // Valor do dia 25/08/2023 as 20hrs
                         break;
                     case 2:
-                        classificacao = "Média";
+                        classificacao = "MÉDIA";
                         pontos = 4;
                         valor = 130.16;                  // Valor do dia 25/08/2023 as 20hrs
                         break;
                     case 3:
-                        classificacao = "Grave";
+                        classificacao = "GRAVE";
                         pontos = 5;
                         valor = 195.23;                  // Valor do dia 25/08/2023 as 20hrs
                         break;
                     case 4:
-                        classificacao = "Gravíssima";
+                        classificacao = "GRAVÍSSIMA";
                         pontos = 7;
                         valor = 293.47;                  // Valor do dia 25/08/2023 as 20hrs
                         break;
@@ -180,19 +183,21 @@ public class MultaController {
         }
     }
 
-//    public static void listaMultas(){
-//        ArrayList<Multa> multas = new ArrayList<>();
-//        multas = buscaMultaGeral();
-//
-//        System.out.println("Multas cadastradas: \n");
-//        if (multas != null){
-//            for (Multa multa : multas) {
-//                System.out.println(multa);
-//            }
-//        } else {
-//            System.out.println("\n\t\t Nenhuma multa cadastrada no sistema!\n");
-//        }
-//    }
+/*
+    public static void listaMultas(){
+        ArrayList<Multa> multas = new ArrayList<>();
+        multas = buscaMultaGeral();
+
+        System.out.println("Multas cadastradas: \n");
+        if (multas != null){
+            for (Multa multa : multas) {
+                System.out.println(multa);
+            }
+        } else {
+            System.out.println("\n\t\t Nenhuma multa cadastrada no sistema!\n");
+        }
+    }
+ */
 
     public static void listaMultas(String classificacao){
         ArrayList<Multa> multas = new ArrayList<>();

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class AdministradorDAO {
     public static boolean insereAdministrador(@NotNull Administrador autor){
@@ -195,6 +196,7 @@ public class AdministradorDAO {
 
             int id = 0;
 
+            login = "";
             String nome = "";
             String email = "";
             String senha = "";
@@ -203,6 +205,7 @@ public class AdministradorDAO {
 
             while (rs.next()){
                 id = rs.getInt("tbAdministrador_Id");
+                login = rs.getString("tbAdministrador_Login");
                 nome = rs.getString("tbAdministrador_Nome");
                 email = rs.getString("tbAdministrador_Email");
                 senha = rs.getString("tbAdministrador_Senha");
@@ -210,7 +213,11 @@ public class AdministradorDAO {
 
             sql.close();
 
-            return new Administrador(id, nome, email, login, senha);
+            if(!login.isEmpty()){
+                return new Administrador(id, nome, email, login, senha);
+            }
+
+            return null;
         } catch (SQLException e){
             String mensagemDeErro = "Ocorreu um erro durante a execução da consulta SQL: " + e.getMessage();
             System.err.println(mensagemDeErro);

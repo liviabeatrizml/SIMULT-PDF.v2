@@ -92,16 +92,16 @@ public class AutuacaoTransitoController {
 
                 switch (opcao) {
                     case 1:
-                        classificacao = "Leve";
+                        classificacao = "LEVE";
                         break;
                     case 2:
-                        classificacao = "Média";
+                        classificacao = "MÉDIA";
                         break;
                     case 3:
-                        classificacao = "Grave";
+                        classificacao = "GRAVE";
                         break;
                     case 4:
-                        classificacao = "Gravíssima";
+                        classificacao = "GRAVÍSSIMA";
                         break;
                     default:
                         System.out.println("\n\t\t Opção inválida!\n");

@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class VeiculoDAO {
+
+/*
     public static boolean insereVeiculo(@NotNull Veiculo veiculo){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();
@@ -41,7 +43,6 @@ public class VeiculoDAO {
         }
     }
 
-/*
     public static boolean editaChassiVeiculo(@NotNull Veiculo veiculo){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();
@@ -293,5 +294,4 @@ public class VeiculoDAO {
             return null;
         }
     }
-
 }

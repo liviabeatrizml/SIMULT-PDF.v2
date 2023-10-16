@@ -283,5 +283,4 @@ public class MultaDAO {
             return null;
         }
     }
-
 }

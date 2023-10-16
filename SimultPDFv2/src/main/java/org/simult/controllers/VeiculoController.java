@@ -6,7 +6,6 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import static org.simult.models.dao.VeiculoDAO.buscaVeiculo;
-import static org.simult.models.dao.VeiculoDAO.insereVeiculo;
 
 public class VeiculoController {
     private static final Scanner input = new Scanner(System.in);
