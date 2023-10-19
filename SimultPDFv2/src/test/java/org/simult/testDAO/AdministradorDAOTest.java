@@ -10,7 +10,7 @@ import static org.simult.models.dao.AdministradorDAO.insereAdministrador;
 public class AdministradorDAOTest {
 
     @Test
-    public void testInsertAdministrador(){
+    public void testInsereAdministrador(){
         Administrador autor = new Administrador("Luan Pereira Augusto", "LudjsfksanPA@gmail.com", "luanlpdsdppa.123", "LuanPA123");
         boolean situacao = insereAdministrador(autor);
         assertTrue(situacao);
@@ -47,7 +47,7 @@ public class AdministradorDAOTest {
     }
 
     @Test
-    public void testSearchAdministradorLogin(){
+    public void testBuscaAdministradorLogin(){
         String login = "geisa.pereiro";
         Administrador adm = buscaAdministrador(login);
         assertNotNull(adm);
@@ -58,7 +58,7 @@ public class AdministradorDAOTest {
     }
 
     @Test
-    public void testSearchAdministradorId(){
+    public void testBuscaAdministradorId(){
         int id = 2;
         Administrador adm = buscaAdministrador(id);
         assertNotNull(adm);

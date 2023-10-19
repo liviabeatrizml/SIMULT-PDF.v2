@@ -12,7 +12,7 @@ import static org.simult.models.dao.MultaDAO.*;
 public class MultaDAOTest {
 
     @Test
-    public void testSearchMulta(){
+    public void testBuscaMulta(){
         String codigoCorrect = "679-30";
         Multa multa1 = buscaMulta(codigoCorrect);
         assertNotNull(multa1);
@@ -39,7 +39,7 @@ public class MultaDAOTest {
     }
 
     @Test
-    public void testSearchClassifyMulta(){
+    public void testBuscaClassifyMulta(){
         ArrayList<Multa> multasCorrect = new ArrayList<>();
 
         String classificacaoCorrect = "Leve";
@@ -68,7 +68,7 @@ public class MultaDAOTest {
     }
 
     @Test
-    public void testSearchAllMulta(){
+    public void testBuscaTodasMulta(){
         ArrayList<Multa> multas = new ArrayList<>();
 
         multas = buscaMultaGeral();

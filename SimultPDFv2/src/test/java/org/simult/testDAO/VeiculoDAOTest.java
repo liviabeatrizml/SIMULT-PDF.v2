@@ -9,7 +9,7 @@ import static org.simult.models.dao.VeiculoDAO.buscaVeiculo;
 public class VeiculoDAOTest {
 
     @Test
-    public void testSearchVeiculo(){
+    public void testBuscaVeiculo(){
         String placaCorrect = "INU0D54";
         String renavamCorrect = "90587358493";
         Veiculo veiculo1 = buscaVeiculo(placaCorrect, renavamCorrect);

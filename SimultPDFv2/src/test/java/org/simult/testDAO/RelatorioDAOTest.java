@@ -13,14 +13,14 @@ import static org.simult.models.dao.RelatorioDAO.insereRelatorio;
 public class RelatorioDAOTest {
 
     @Test
-    public void testInsertRelatorio(){
+    public void testInsereRelatorio(){
         Administrador autor = new Administrador(1, "Alysson Milanez", "admin@gmail.com", "admin", "$2a$10$dxZ2u1PRt3mUkTtRZfYDLu5sts8HP8ubKTW9SGKiMRDG1XiI8I2qy");
         Relatorio relatorio = new Relatorio(autor);
         assertTrue(insereRelatorio(relatorio));
     }
 
     @Test
-    public void testSearchIdRelatorio(){
+    public void testBuscaIdRelatorio(){
         String dataHora = "10/10/2023 - 14:16:28 BRT";
         int idAdministrador = 2;
 

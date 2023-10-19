@@ -13,7 +13,7 @@ import static org.simult.models.dao.RelatorioAutuacaoDAO.insereRelatorioDeAutuac
 public class RelatorioAutuaocaoDAOTest {
 
     @Test
-    public void testInsertRelatorioAutuacao(){
+    public void testInsereRelatorioAutuacao(){
         int idRelatorio = 8;
         int idAutuacao = 11;
         assertTrue(insereRelatorioDeAutuacao(idRelatorio, idAutuacao));
@@ -27,7 +27,7 @@ public class RelatorioAutuaocaoDAOTest {
     }
 
     @Test
-    public void testSearchRelatorioAutuacoes(){
+    public void testBuscaRelatorioAutuacoes(){
         int idRelatorio = 8;
 
         LinkedList<Integer> lista = buscaAutuacoesRelatorio(idRelatorio);
