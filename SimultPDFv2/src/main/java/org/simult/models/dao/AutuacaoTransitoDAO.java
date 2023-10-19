@@ -54,7 +54,7 @@ public class AutuacaoTransitoDAO {
         }
     }
 
-/*
+/* Proximas atualizações
 
     public static boolean editaAutorAutuacao(@NotNull AutuacaoTransito autuacao){
         Conexao conexao = Conexao.getInstance();

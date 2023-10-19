@@ -3,13 +3,12 @@ package org.simult;
 import org.simult.models.entity.Administrador;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.simult.controllers.AdministradorController.*;
 
 public class App  {
-    //    public static final String ANSI_RESET = "\u001B[0m";
-    //    public static final String ANSI_BLUE = "\u001B[34m"+"\033[1m";
-
     public static void main( String[] args ) {
         Scanner input = new Scanner(System.in);
         Administrador adm = null;
@@ -22,9 +21,8 @@ public class App  {
 
         do {
             if (adm != null) {
-                //System.out.println(ANSI_BLUE + "\n\t\t\t **** SIMULT-PDF  V.2 **** \n");
                 System.out.println("\n\t- Que operação deseja realizar:");
-                System.out.print("\t\t1. Cadastrar novo administrador\n\t\t2. Buscar veículo\n\t\t3. Buscar multa\n\t\t4. Vincular multa a um veículo\n\t\t5. Desvincular multa de um veículo\n\t\t6. Gerar relatório de autuações\n\t\t7. Sair\n\t\t8. Fechar sistema\n\tOpcao: "); // + ANSI_RESET
+                System.out.print("\t\t1. Cadastrar novo administrador\n\t\t2. Buscar veículo\n\t\t3. Buscar multa\n\t\t4. Vincular multa a um veículo\n\t\t5. Desvincular multa de um veículo\n\t\t6. Gerar relatório de autuações\n\t\t7. Sair\n\t\t8. Fechar sistema\n\tOpcao: ");
                 try {
                     opcao = Integer.parseInt(input.nextLine());
 
@@ -78,7 +76,7 @@ public class App  {
                 System.out.println("\n\t\t Para acessar o sistema é necessário está logado!\n");
                 adm = logar();
             }
-        } while (opcao != 9);
+        } while (opcao != 8);
         /**/
     }
 }

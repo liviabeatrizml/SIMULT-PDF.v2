@@ -18,7 +18,7 @@ import static org.simult.models.dao.VeiculoDAO.buscaVeiculo;
 public class AutuacaoTransitoController {
     private static final Scanner input = new Scanner(System.in);
 
-    public static boolean cadastrarAutuacao(Administrador autor){
+    public static boolean cadastrarAutuacao(@NotNull Administrador autor){
         int id = 0;
         int opcao = 0;
 
@@ -58,7 +58,7 @@ public class AutuacaoTransitoController {
                 System.out.print("\t- Informe o RENAVAM do veículo: ");
                 renavam = input.nextLine();
 
-                Pattern letras = Pattern.compile("^[A-Z]+$");
+                Pattern letras = Pattern.compile("[a-zA-Z]+");
 
                 if(renavam.length() == 9 || renavam.length() == 11) {
                     if (letras.matcher(renavam).find()){
@@ -154,8 +154,10 @@ public class AutuacaoTransitoController {
 
             if (estado.isEmpty()) {
                 System.out.println("\n\t\t É necessário informar a estado da autuação!\n");
+            } else if(estado.length() > 50){
+                System.out.println("\n\t\t O estado da autuação deve ter no máximo 50 caracteres!\n");
             }
-        } while (estado.isEmpty());
+        } while (estado.isEmpty() || estado.length() > 50);
 
         // Entrada do atributo municipio da autuacao
         do {
@@ -164,8 +166,10 @@ public class AutuacaoTransitoController {
 
             if (municipio.isEmpty()) {
                 System.out.println("\n\t\t É necessário informar o município da autuação!\n");
+            } else if(municipio.length() > 80){
+                System.out.println("\n\t\t O município da autuação deve ter no máximo 80 caracteres!\n");
             }
-        } while (municipio.isEmpty());
+        } while (municipio.isEmpty() || municipio.length() > 80);
 
         AutuacaoTransito autuacao = new AutuacaoTransito(autor, veiculo, multa, estado, municipio);
 

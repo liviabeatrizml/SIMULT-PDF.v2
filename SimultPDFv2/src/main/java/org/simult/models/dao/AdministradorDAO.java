@@ -36,6 +36,8 @@ public class AdministradorDAO {
         }
     }
 
+/*  Proximas atualizações
+
     public static boolean editaNomeAdministrador(@NotNull Administrador autor){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();
@@ -142,6 +144,7 @@ public class AdministradorDAO {
             return false;
         }
     }
+*/
 
     @Nullable
     public static Administrador buscaAdministrador(int id){

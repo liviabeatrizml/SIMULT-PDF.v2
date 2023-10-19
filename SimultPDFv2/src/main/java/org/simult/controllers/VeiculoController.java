@@ -233,14 +233,14 @@ public class VeiculoController {
 
         // Entrada do valor da placa do veículo
         do {
-            System.out.print("\t- Escreva a PLACA do veículo: ");
+            System.out.print("\t- Escreva a PLACA do veículo (7 dígitos): ");
             placa = input.nextLine().toUpperCase();
 
             Pattern letras = Pattern.compile("^[A-Z]+$");
             Pattern nums = Pattern.compile("^[0-9]+$");
 
             if(placa.length() == 7){
-                if(!letras.matcher(placa.substring(0, 3)).find() && !nums.matcher(("" + placa.charAt(3))).find() && !letras.matcher(("" + placa.charAt(4))).find() && !nums.matcher(placa.substring(5, 7)).find()){
+                if(!letras.matcher(placa.substring(0, 3)).find() || !nums.matcher(("" + placa.charAt(3))).find() || !letras.matcher(("" + placa.charAt(4))).find() || !nums.matcher(placa.substring(5, 7)).find()){
                     System.out.println("\n\t\t Formato da placa do veículo incorreta!\n");
                     placa = "";
                 }
@@ -252,10 +252,10 @@ public class VeiculoController {
 
         // Entrada do valor do renavam do veículo
         do {
-            System.out.print("\t- Informe o RENAVAM do veículo: ");
-            renavam = input.nextLine();
+            System.out.print("\t- Informe o RENAVAM do veículo (9 ou 11 algarismos): ");
+            renavam = input.nextLine().toUpperCase();
 
-            Pattern letras = Pattern.compile("^[A-Z]+$");
+            Pattern letras = Pattern.compile("[a-zA-Z]+");
 
             if(renavam.length() == 9 || renavam.length() == 11) {
                 if (letras.matcher(renavam).find()){

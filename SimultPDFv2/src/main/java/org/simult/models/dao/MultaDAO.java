@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class MultaDAO {
 
-/*
+/* Utilizados para realizar os testes
     public static boolean insereMulta(@NotNull Multa multa){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();

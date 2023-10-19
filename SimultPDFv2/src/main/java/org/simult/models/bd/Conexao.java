@@ -37,13 +37,12 @@ public class Conexao {
         try {
             if (conexcao != null) {
                 conexcao.close();
-                return true;
             }
+            return true;
+
         } catch (SQLException e) {
             System.out.println("\nFalha ao encerrar conexão: " + e.getMessage());
+            return false;
         }
-
-        return false;
     }
-
 }

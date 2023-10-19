@@ -83,6 +83,7 @@ public class RelatorioDAO {
         }
     }
 
+/*  Proximas atualizações
     @Nullable
     public static Relatorio buscaRelatorio(int idRelatorio){
         Conexao conexao = Conexao.getInstance();
@@ -128,5 +129,6 @@ public class RelatorioDAO {
             return null;
         }
     }
+*/
 
 }

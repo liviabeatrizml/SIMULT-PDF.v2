@@ -12,7 +12,8 @@ import java.sql.SQLException;
 
 public class VeiculoDAO {
 
-/*
+/* Utilizado para realizar os testes
+
     public static boolean insereVeiculo(@NotNull Veiculo veiculo){
         Conexao conexao = Conexao.getInstance();
         Connection con = conexao.getConexao();

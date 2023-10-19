@@ -156,7 +156,7 @@ public class MultaController {
                 id = Integer.parseInt(input.nextLine());
 
                 if (id < 10000 || id > 99999){
-                    System.out.println("\n\t\t Tamanho inválido do campo de código!\n");
+                    System.out.println("\n\t\t Tamanho inválido do campo de código. Deve ter 5 dígitos, apenas!\n");
                 } else {
                     codigo = "" + id;
                     aux1 = codigo.substring(0,3);
@@ -183,7 +183,8 @@ public class MultaController {
         }
     }
 
-/*
+/* Proximas Atualizações
+
     public static void listaMultas(){
         ArrayList<Multa> multas = new ArrayList<>();
         multas = buscaMultaGeral();

@@ -50,7 +50,7 @@ public class AdministradorController{
         return null;
     }
 
-    public static boolean cadastrarAdministrador(@NotNull Administrador administrador){
+    public static boolean cadastrarAdministrador(@NotNull Administrador administrador) {
         if(administrador.getId() == 1){
             String nome = "";
             String email = "";
@@ -64,8 +64,10 @@ public class AdministradorController{
 
                 if(nome.isEmpty()) {
                     System.out.println("\n\t\t É necessário informar o nome do administrador!\n");
+                } else if(nome.length() > 80){
+                    System.out.println("\n\t\t O nome do administrador deve ter no máximo 80 caracteres!\n");
                 }
-            } while (nome.isEmpty());
+            } while (nome.isEmpty() || nome.length() > 80);
 
             // Entrada do atributo email do administrador
             do {
@@ -74,8 +76,10 @@ public class AdministradorController{
 
                 if(email.isEmpty()) {
                     System.out.println("\n\t\t É necessário informar um email para a conta!\n");
+                } else if(email.length() > 80){
+                    System.out.println("\n\t\t O email do administrador deve ter no máximo 80 caracteres!\n");
                 }
-            } while (email.isEmpty());
+            } while (email.isEmpty() || email.length() > 80);
 
             // Entrada do atributo login do administrador
             do {
@@ -84,8 +88,10 @@ public class AdministradorController{
 
                 if(login.isEmpty()) {
                     System.out.println("\n\t\t É necessário informar um login para a conta!\n");
+                } else if(login.length() > 30){
+                    System.out.println("\n\t\t O login do administrador deve ter no máximo 30 caracteres!\n");
                 }
-            } while (login.isEmpty());
+            } while (login.isEmpty() || login.length() > 30);
 
             // Entrada do atributo senha do administrador
             do {
@@ -108,11 +114,11 @@ public class AdministradorController{
         }
     }
 
-    public static boolean vincularMulta(Administrador administrador){
+    public static boolean vincularMulta(@NotNull Administrador administrador){
         return cadastrarAutuacao(administrador);
     }
 
-    public static boolean desvincularMulta(Administrador administrador){
+    public static boolean desvincularMulta(@NotNull Administrador administrador){
         return removerAutuacao(administrador);
     }
 
@@ -124,7 +130,7 @@ public class AdministradorController{
         verDadosMulta();
     }
 
-    public static boolean gerarRelatorio(Administrador administrador){
+    public static boolean gerarRelatorio(@NotNull Administrador administrador){
         return criarRelatorio(administrador);
     }
 

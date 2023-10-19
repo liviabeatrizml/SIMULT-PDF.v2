@@ -13,7 +13,6 @@ public class Veiculo {
     private String marca;
     private String modelo;
     private String especie;
-    private ArrayList<Multa> multas;
 
     public Veiculo(String placa, String renavam, String chassi, String proprietario, String estadoRegistro, String municipioRegistro, String cor, String marca, String modelo, String especie) {
         this.placa = placa;
@@ -26,22 +25,6 @@ public class Veiculo {
         this.marca = marca;
         this.modelo = modelo;
         this.especie = especie;
-        this.multas = new ArrayList<>();
-    }
-
-    public Veiculo(String placa, String renavam, String chassi, String proprietario, String estadoRegistro, String municipioRegistro, String cor, String marca, String modelo, String especie, ArrayList<Multa> multas) {
-        this.placa = placa;
-        this.renavam = renavam;
-        this.chassi = chassi;
-        this.proprietario = proprietario;
-        this.estadoRegistro = estadoRegistro;
-        this.municipioRegistro = municipioRegistro;
-        this.cor = cor;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.especie = especie;
-        this.multas = multas;
-        this.multas = new ArrayList<>();
     }
 
     public String getPlaca() {
@@ -122,14 +105,6 @@ public class Veiculo {
 
     public void setCor(String cor) {
         this.cor = cor;
-    }
-
-    public ArrayList<Multa> getMultas() {
-        return multas;
-    }
-
-    public void setMultas(ArrayList<Multa> multas) {
-        this.multas = multas;
     }
 
     @Override
