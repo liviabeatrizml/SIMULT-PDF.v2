@@ -17,7 +17,6 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
 	 - [RF007] O administrador pode vincular multas a veículos; 
 	 - [RF008] Permitir que o administrador excluir multas em veículos; 
 	 - [RF009] O administrador pode gerar relatório de multa vinculados no dia; 
-	 - [RF010] O administrador pode gerar relatório com o histórico de todas as suas ações. 
 	 
  - Não Funcionais
 	 - [RNF001] Deve haver criptografia da senha dos usuários;
@@ -33,7 +32,7 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
 ![Diagrama de Classe](Diagramas/ClassDiagram_Teste_de_Software.png)
 
  - Banco de Dados: Modelo Lógico
-![Modelo Lógico](Banco_de_dados/ModeloLogicoBD_Teste_De_Software.png)
+![Modelo Lógico](Banco_de_dados/Banco_de_Dados_Atualizado.png)
 
 ## :hammer_and_wrench: Realização de Teste
 
@@ -43,11 +42,9 @@ Embasado nisso, o SIMULT-PDF 2.0 é resultado do aprimoramento do sistema anteri
  - Teste Funcional
 	 - Partição por Equivalência
 	 - Analise do valor limite
-	 - Grafo de Causo-Efeito
 	 
- - [ ] Teste de Unidade
- - [ ] Teste de Integração
- - [ ] Teste de Aceitação
+ - [x] Teste de Unidade
+ - [x] Teste de Integração
 
 ## :family_man_woman_girl_boy: Equipe
 :man_teacher: Professor: [Alysson Filgueira Milanez](https://github.com/alyssonfm). </br>
